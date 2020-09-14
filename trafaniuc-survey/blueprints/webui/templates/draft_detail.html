@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="ui container">
+    <div class="ui fluid steps">
+        <div class="active step">
+            <i class="edit icon"></i>
+            <div class="content">
+                <div class="title">Rascunho</div>
+                <div class="description">Praparar os dados da pesquisa</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="paper plane icon"></i>
+            <div class="content">
+                <div class="title">Publicação</div>
+                <div class="description">Revisão dos dados e publicação</div>
+            </div>
+        </div>
+        <div class="step">
+            <i class="share alternate icon"></i>
+            <div class="content">
+                <div class="title">Compartilhamento</div>
+                <div class="description">Compartilhar o link da pesquisa</div>
+            </div>
+        </div>
+    </div>
+
+    <form class="ui form">
+        <div class="small ui buttons right floated">
+            <button type="submit" class="ui primary vertical animated button">
+                <div class="visible content">
+                    <i class="arrow right icon"></i>
+                </div>
+                <div class="hidden content">Próximo</div>
+            </button>
+            <a class="ui vertical animated button" onclick="$('#cancel').modal('show')">
+                <div class="visible content">
+                    <i class="cancel icon"></i>
+                </div>
+                <div class="hidden content">Cancelar</div>
+            </a>            
+        </div>      
+
+        <h2 class="ui header">Nova pesquisa</h2>
+        <div class="ui section divider"></div>
+
+        <div class="field">
+            <label>Título</label>
+            <input type="text" name="title" placeholder="Título">
+        </div>
+    </form>
+</div>
+
+<div id="cancel" class="ui mini modal">
+    <div class="header">Atenção</div>
+    <div class="content">
+        <p>
+            Todos os dados não salvos serão perdidos.<br>
+            Deseja continuar?
+        </p>
+    </div>
+    <div class="actions">
+        <div class="ui approve button">Não</div>
+        <a class="ui negative button" href="{{ url_for('webui.draft_list') }}">Sim</a>
+    </div>
+</div>
+{% endblock %}

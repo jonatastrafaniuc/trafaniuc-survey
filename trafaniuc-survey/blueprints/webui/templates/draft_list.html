@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="ui container">
+    <div class="small ui buttons">
+        <a class="ui primary vertical animated button" href="{{ url_for('webui.draft_add') }}">
+            <div class="visible content">
+                <i class="plus icon"></i>
+            </div>
+            <div class="hidden content">Novo</div>
+        </a>
+    </div>
+    <table class="ui small single line table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th class="center aligned collapsing">Última alteração</th>
+                <th class="center aligned collapsing">Questões</th>
+                <th class="collapsing">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in surveys %}
+            <tr>
+                <td>{{s['title']}}</td>
+                <td class="right aligned collapsing">{{s['created_on']|datetime('%d/%m/%Y %H:%M')}}</td>
+                <td class="right aligned collapsing">0</td>
+                <td class="center aligned collapsing">
+                    <div class="small ui buttons">
+                        <button class="ui primary vertical animated button">
+                            <div class="visible content">
+                                <i class="paper plane icon"></i>
+                            </div>
+                            <div class="hidden content">Publicar</div>
+                        </button>                    
+                        <button class="ui vertical animated button">
+                            <div class="visible content">
+                                <i class="edit icon"></i>
+                            </div>
+                            <div class="hidden content">Alterar</div>
+                        </button>
+                    </div>
+                    <div class="small ui buttons">
+                        <button class="ui small negative vertical animated button">
+                            <div class="visible content">
+                                <i class="trash icon"></i>
+                            </div>
+                            <div class="hidden content">Apagar</div>
+                        </button>                              
+                    </div>   
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

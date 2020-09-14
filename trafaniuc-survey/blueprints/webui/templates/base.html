@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/semantic.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/semantic.min.css') }}">
+</head>
+
+<body>
+    <div class="ui secondary pointing menu">
+        <a class="header item {{'active' if menu == 'home' else ''}}" href="{{ url_for('webui.index') }}">
+            Trafaniuc.Survey
+        </a>
+        <a class="item {{'active' if menu == 'draft' else ''}}" href="{{ url_for('webui.draft_list') }}">
+            Rascunhos
+        </a>
+        <a class="item">
+            Publicadas
+        </a>
+        <a class="item">
+            Finalizadas
+        </a>
+        <div class="right menu">
+            <a class="ui item">
+                Logout
+            </a>
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+</body>
+
+</html>
