@@ -32,19 +32,16 @@ class Survey(Doc):
 
     @classmethod
     def get_owner_drafts(cls, owner: str, skip: int, limit: int):
-        filters = {
-            '$and': [{
-                'owner': owner,
-                'status': SurveyStatus.draft.value
-            }]
-        }
-        projection = ['owner','created_on','updated_on','title']
-        return list(db.db.surveys.find(
-            filter=filters,
-            projection=projection,            
-            skip=0,
-            limit=20)
-        )
+        query_match = {'owner': owner, 'status': SurveyStatus.draft.value}
+        query_set = {'questions_total': {'$size': '$questions'}}
+        query_project = {'owner': 1, 'created_on': 1,
+                         'updated_on': 1, 'title': 1, 'questions_total': 1}
+        aggregation = [
+            {'$match': query_match},
+            {'$set': query_set},
+            {'$project': query_project}
+        ]
+        return list(db.db['surveys'].aggregate(aggregation))
 
 
 class SurveyQuestion(Doc):

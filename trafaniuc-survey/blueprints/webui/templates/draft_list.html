@@ -15,15 +15,15 @@
                 <th>Título</th>
                 <th class="center aligned collapsing">Última alteração</th>
                 <th class="center aligned collapsing">Questões</th>
-                <th class="collapsing">Ações</th>
+                <th class="center aligned collapsing">Ações</th>
             </tr>
         </thead>
         <tbody>
-            {% for s in surveys %}
+            {% for survey in surveys %}
             <tr>
-                <td>{{s['title']}}</td>
-                <td class="right aligned collapsing">{{s['created_on']|datetime('%d/%m/%Y %H:%M')}}</td>
-                <td class="right aligned collapsing">0</td>
+                <td>{{survey['title']}}</td>
+                <td class="right aligned collapsing">{{survey['created_on']|datetime('%d/%m/%Y %H:%M')}}</td>
+                <td class="right aligned collapsing">{{survey['questions_total']}}</td>
                 <td class="center aligned collapsing">
                     <div class="small ui buttons">
                         <button class="ui primary vertical animated button">

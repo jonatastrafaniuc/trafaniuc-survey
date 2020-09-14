@@ -1,0 +1,20 @@
+[default]
+SQLALCHEMY_DATABASE_URI = 'sqlite:///development.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = false
+MONGO_URI = 'mongodb://localhost:27017/survey'
+SECRET_KEY = "jadkfbsdkjbfbh"
+EXTENSIONS = [
+    "trafaniuc-survey.ext.admin:init_app",
+    "trafaniuc-survey.ext.commands:init_app",
+    "trafaniuc-survey.ext.database:init_app",
+    "trafaniuc-survey.ext.filters:init_app",
+    "trafaniuc-survey.blueprints.webui:init_app"
+]
+
+[development]
+
+[testing]
+SQLALCHEMY_DATABASE_URI = 'sqlite:///testing.db'
+
+[production]
+SQLALCHEMY_DATABASE_URI = 'sqlite:///production.db'
